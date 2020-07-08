@@ -1,0 +1,22 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --ignore-watch node_modules src/server.ts"
+  },
+  "author": "Ruan Scherer <ruan.scherer@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/socket.io": "^2.1.8",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.50",
+    "typescript": "^3.9.6"
+  }
+}
