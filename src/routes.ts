@@ -5,6 +5,7 @@ import UserController from './controllers/UserController'
 const router = express.Router()
 
 router.post('/users', UserController.store)
+router.post('/users/auth', UserController.auth)
 router.get('/messages', MessageController.index)
 router.post('/messages', MessageController.store)
 

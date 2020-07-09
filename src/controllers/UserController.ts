@@ -9,6 +9,18 @@ function generateToken(params: object) {
 }
 
 class UserController {
+	public async auth(request: Request, response: Response) {
+		const { username, password } = request.body
+
+		if (!username || !password) return response.status(400).send()
+		const user = await User.findOne({ username }).select('+password')
+		if (!user) return response.send(400)
+
+		if(!await bcrypt.compare(password, user.password)) return response.status(400).send()
+
+		return response.send({ token: generateToken({ id: user._id}) })
+	}
+	
 	public async store(request: Request, response: Response) {
 		const { username, password } = request.body
 
