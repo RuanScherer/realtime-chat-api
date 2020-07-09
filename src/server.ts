@@ -1,6 +1,5 @@
-import express, { Request, Response } from 'express'
+import app from './App'
 import { Socket } from 'socket.io';
-var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 

@@ -9,11 +9,15 @@
   "author": "Ruan Scherer <ruan.scherer@outlook.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/cors": "^2.8.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^5.9.22",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.7",
+    "@types/mongoose": "^5.7.30",
     "@types/socket.io": "^2.1.8",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.50",
