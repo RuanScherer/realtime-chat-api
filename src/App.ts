@@ -24,7 +24,8 @@ class App {
 	private database(): void {
 		mongoose.connect('mongodb://localhost:27017/realtime-chat', {
 			useUnifiedTopology: true,
-			useNewUrlParser: true
+			useNewUrlParser: true,
+			useCreateIndex: true
 		})
 	}
 
