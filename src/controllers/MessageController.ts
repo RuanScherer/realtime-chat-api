@@ -3,7 +3,7 @@ import Message from '../models/Message'
 
 class MessageController {
 	public async index(request: Request, response: Response) {
-		const messages = await Message.find()
+		const messages = await Message.find().sort({'createdAt': -1})
 
 		if (!messages) return response.status(500).send()
 
