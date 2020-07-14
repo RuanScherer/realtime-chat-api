@@ -1,4 +1,4 @@
-import express, { request, Request } from 'express'
+import express from 'express'
 import MessageController from './controllers/MessageController'
 import UserController from './controllers/UserController'
 import authMiddleware from './middlewares/auth'
