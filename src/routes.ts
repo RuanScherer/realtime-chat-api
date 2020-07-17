@@ -5,6 +5,7 @@ import authMiddleware from './middlewares/auth'
 
 const router = express.Router()
 
+router.get('/users/search', UserController.show)
 router.post('/users', UserController.store)
 router.post('/users/auth', UserController.auth)
 
