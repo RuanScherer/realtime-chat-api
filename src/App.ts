@@ -22,7 +22,7 @@ class App {
 	}
 
 	private database(): void {
-		mongoose.connect('mongodb://localhost:27017/realtime-chat', {
+		mongoose.connect('mongodb+srv://usuario_admin:123@mycluster-lcfko.mongodb.net/realtime-chat?retryWrites=true&w=majority', {
 			useUnifiedTopology: true,
 			useNewUrlParser: true,
 			useCreateIndex: true
