@@ -54,6 +54,14 @@ class UserController {
 		if (!users) return response.status(400).send()
 		return response.send({ users })
 	}
+
+	public async showById(request: Request, response: Response) {
+		const { id } = request.params
+		
+		const user = await User.findById(id)
+		if (!user) return response.status(400).send()
+		return response.send({ user })
+	}
 }
 
 export default new UserController()

@@ -11,6 +11,7 @@ router.post('/users/auth', UserController.auth)
 router.use(authMiddleware)
 
 router.get('/users/search', UserController.show)
+router.get('/users/:id', UserController.showById)
 router.put('/users/:id', UserController.update)
 router.get('/messages', MessageController.index)
 router.post('/messages', MessageController.store)
