@@ -18,7 +18,7 @@ io.on('connection', (socket: ISocket) => {
 	socket.emit("loadOldMessages")
 
 	socket.on('newMessage', data => {
-		socket.broadcast.emit('loadNewMessage', data)
+		io.emit('loadNewMessage', data)
 	})
 })
 
