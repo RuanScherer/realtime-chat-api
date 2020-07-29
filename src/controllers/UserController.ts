@@ -30,8 +30,21 @@ class UserController {
 
 		const hash = await bcrypt.hash(password, 10)
 		const user = await User.create({ username, password: hash })
-		if (!user) return response.send(500)
+		if (!user) return response.status(500).send()
 		return response.send({ token: generateToken({ id: user._id, username: user.username }) })
+	}
+
+	public async update(request: Request, response: Response) {
+		const { username } = request.body
+		const { id } = request.params
+		
+		if (!username) return response.status(400).send()
+		const user = await User.findById(id)
+		if (!user) return response.status(400).send()
+
+		User.updateOne({ _id: id }, { username })
+			.then(() => response.send())
+			.catch(err => response.status(500).send({ err }))
 	}
 
 	public async show(request: Request, response: Response) {
