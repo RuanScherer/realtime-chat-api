@@ -39,8 +39,12 @@ class MessageController {
 
 		const messages = await Message.find()
 		.where({
-			"from._id": userId,
-			"to._id": id
+			"from._id": {
+				$in: [ userId, id ]
+			},
+			"to._id": {
+				$in: [ userId, id ]
+			}
 		})
 		.sort({'createdAt': -1})
 
