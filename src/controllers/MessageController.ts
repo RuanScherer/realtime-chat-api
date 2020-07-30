@@ -4,7 +4,7 @@ import User from '../models/User'
 
 class MessageController {
 	public async index(request: Request, response: Response) {
-		const messages = await Message.find().sort({'createdAt': -1})
+		const messages = await Message.find({ to : { $exists: false }}).sort({'createdAt': -1})
 
 		if (!messages) return response.status(500).send()
 		return response.send({ messages })
@@ -37,10 +37,12 @@ class MessageController {
 		const { userId } = request.body
 		const { id } = request.params
 
-		const messages = await Message.find().where({ 
-			from: "ruans",
-			to: id
-		}).sort({'createdAt': -1})
+		const messages = await Message.find()
+		.where({
+			"from._id": userId,
+			"to._id": id
+		})
+		.sort({'createdAt': -1})
 
 		if (!messages.length) return response.status(400).send()
 		return response.send({ messages })
