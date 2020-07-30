@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import User from '../models/User'
+import Message from '../models/Message'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 const authConfig = require('../config/auth.json')
@@ -43,7 +44,11 @@ class UserController {
 		if (!user) return response.status(400).send()
 
 		User.updateOne({ _id: id }, { username })
-			.then(() => response.send())
+			.then(() => {
+				Message.updateMany({ "from._id": user._id }, { "from.username": username })
+					.then(() => response.send())
+					.catch(() => response.status(500).send())
+			})
 			.catch(err => response.status(500).send({ err }))
 	}
 
